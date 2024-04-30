@@ -1,0 +1,85 @@
+#include<reg51.h> // Include header file for 8051 microcontroller
+#define stp_port P1 // Define port for stepper motor connections
+#define dly_cnt 10 // Define delay count for stepper motor movement
+#define steps 512 // Define number of steps for stepper motor movement
+void delay(unsigned int time) // Function to create a delay
+{
+unsigned int i,j; // Declare variables for loop counters
+for(i=0; i<time; i++) // Outer loop to repeat delay for specified time
+{
+for(j=0; j<275; j++); // Inner loop to introduce delay
+}
+}
+int main() // Main function
+{
+unsigned int x=0; // Declare and initialize loop variable
+// Loop for forward movement of stepper motor
+for(x=0; x<steps; x++)
+{
+stp_port=0X03; // Apply sequence 0X03 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X06; // Apply sequence 0X06 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X0C; // Apply sequence 0X0C for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X09; // Apply sequence 0X09 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+}
+// Loop for reverse movement of stepper motor
+for(x=0; x<steps; x++)
+{
+
+stp_port=0X09; // Apply sequence 0X09 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X0C; // Apply sequence 0X0C for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X06; // Apply sequence 0X06 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X03; // Apply sequence 0X03 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+}
+return 0; // Return 0 to indicate successful completion of program
+}
+//
+HALF ROTATION
+#include<reg51.h> // Include header file for 8051 microcontroller
+#define stp_port P1 // Define port for stepper motor connections
+#define dly_cnt 10 // Define delay count for stepper motor movement
+#define steps 256 // Define number of steps for stepper motor movement
+void delay(unsigned int time) // Function to create a delay
+{
+unsigned int i,j; // Declare variables for loop counters
+for(i=0; i<time; i++) // Outer loop to repeat delay for specified time
+{
+for(j=0; j<275; j++); // Inner loop to introduce delay
+}
+}
+int main() // Main function
+{
+unsigned int x=0; // Declare and initialize loop variable
+// Loop for forward movement of stepper motor
+for(x=0; x<steps; x++)
+{
+stp_port=0X03; // Apply sequence 0X03 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X06; // Apply sequence 0X06 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+
+stp_port=0X0C; // Apply sequence 0X0C for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X09; // Apply sequence 0X09 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+}
+// Loop for reverse movement of stepper motor
+for(x=0; x<steps; x++)
+{
+stp_port=0X09; // Apply sequence 0X09 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X0C; // Apply sequence 0X0C for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X06; // Apply sequence 0X06 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+stp_port=0X03; // Apply sequence 0X03 for stepper motor movement
+delay(dly_cnt); // Introduce delay
+}
+}

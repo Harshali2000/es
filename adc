@@ -24,7 +24,7 @@ void ADC_read() {
 // Configure ADC select lines for desired channel
 SEL_A = 1;
 SEL_B = 1;
-SEL_C = 0;
+SEL_C = 1;
 // Enable ADC
 ALE = 1;
 // Start ADC conversion

@@ -1,0 +1,99 @@
+square
+#include<reg51.h>
+void delay(unsigned int time) //timer
+{
+unsigned int i;
+for(i=0;i<time;i++);
+}
+void main()
+{
+while(1)
+{
+P1=0x00; //LED will be flashed in 0000 0000
+delay(10);
+P1=0xff;
+delay(10);
+}
+}
+
+triangular
+#include<reg51.h>
+
+void main()
+
+	{
+	  int i;
+	while(1)
+	{
+		for(i=0;i<255;i++)
+		{
+        P1=i;
+		}
+		for(i=255;i>=0;i--)
+		{  
+      P1=i;
+    }
+}
+	}
+
+sawtooth
+#include<reg51.h>
+void main()	{
+	  int i;
+	  P1=0x00;
+		while(1)
+	{ for(i=0x00;i<0xFF;i++)
+		{
+      P1=i;
+		}
+		}
+	}
+
+step wave
+#include<reg51.h>
+void delay(unsigned int time)
+{
+	unsigned int i;
+	for(i=0;i<time;i++);
+}
+
+void main()
+
+	{  int j;
+		while(1)
+		{
+			P1=0x00;
+		for(j=0;j<4;j++)
+	
+	{  
+	     P1=P1+63;
+		   delay(50);
+	}	
+	{    P1=0xFF;
+		   for(j=0;j<4;j++)
+		
+		{ 
+	     P1=P1-63;
+			delay(50);
+		}
+	}
+	}
+}
+
+Square Wave with duty cycle 60%
+#include<reg51.h>
+void delay(unsigned int time) //timer
+{
+unsigned int i;
+for(i=0;i<time;i++);
+}
+void main()
+{
+while(1)
+{
+P1=0x00; //LED will be flashed in 0000 0000
+delay(40);
+P1=0xff;
+delay(60);
+}
+}

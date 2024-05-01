@@ -1,0 +1,44 @@
+#include<reg51.h>
+void main(void)
+{
+unsigned char i=0, s[20]="MAYURI AND ADITI";
+TMOD=0X20; //timer 1 8 bit autorelaod
+TH1=0XFA; //baud rate 4800
+SCON=0X50; //01010000=1 :serial port mode specifier,
+//1:ren=set bys/w to enable reception
+TR1=1; //timer start
+while(1)
+{
+while(s[i] != '\0')
+{
+SBUF=s[i];
+while(TI==0);
+TI=0;
+i++;
+}
+}
+}
+
+
+
+#include<reg51.h>
+void main(void)
+{
+unsigned char i=0, serial_data;
+TMOD=0X20; //timer 1 8 bit autorelaod
+TH1=0XFD; //baud rate 9600
+SCON=0X50; //01010000=1 :serial port mode specifier,
+//1:ren=set bys/w to enable reception
+TR1=1; //timer start
+while(1)
+{
+while(!RI);
+{
+serial_data=SBUF;
+RI=0;
+SBUF=serial_data;
+while(TI==0);
+TI=0;
+}
+}
+}
